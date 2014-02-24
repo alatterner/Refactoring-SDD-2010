@@ -1,0 +1,32 @@
+
+src/PolygonArea.java:9	All classes and interfaces must belong to a named package
+src/PolygonArea.java:11	Private field 'oracle' could be made final; it is only initialized in the declaration or constructor.
+src/PolygonArea.java:13	Parameter 'oracle' is not assigned and could be declared final
+src/PolygonArea.java:17	Avoid variables with short names like M
+src/PolygonArea.java:17	Parameter 'M' is not assigned and could be declared final
+src/PolygonArea.java:19	Avoid variables with short names like y
+src/PolygonArea.java:20	Avoid variables with short names like x
+src/PolygonArea2.java:7	All classes and interfaces must belong to a named package
+src/PolygonArea2.java:9	Avoid unused private fields such as 'oracle'.
+src/PolygonArea2.java:9	Perhaps 'oracle' could be replaced by a local variable.
+src/PolygonArea2.java:9	Private field 'oracle' could be made final; it is only initialized in the declaration or constructor.
+src/PolygonArea2.java:11	Parameter 'oracle' is not assigned and could be declared final
+src/PolygonArea2.java:15	Avoid variables with short names like M
+src/PolygonArea2.java:15	Parameter 'M' is not assigned and could be declared final
+src/polygonarea/PolygonAreaIF.java:4	Avoid variables with short names like M
+src/polygonarea/PolygonIF.java:5	Avoid variables with short names like x
+src/polygonarea/PolygonIF.java:5	Avoid variables with short names like y
+src/umm/softwaredesign/polygon/controllers/RunController.java:33	Avoid if (x != y) ..; else ..;
+src/umm/softwaredesign/polygon/controllers/RunController.java:53	Avoid catching NullPointerException; consider removing the cause of the NPE.
+src/umm/softwaredesign/polygon/main/Main.java:6	All methods are static.  Consider using Singleton instead.  Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+src/umm/softwaredesign/polygon/model/Point.java:4	Avoid variables with short names like x
+src/umm/softwaredesign/polygon/model/Point.java:5	Avoid variables with short names like y
+src/umm/softwaredesign/polygon/model/Point.java:8	Avoid variables with short names like x
+src/umm/softwaredesign/polygon/model/Point.java:8	Avoid variables with short names like y
+src/umm/softwaredesign/polygon/model/PolygonAreaLoader.java:31	Avoid catching NullPointerException; consider removing the cause of the NPE.
+src/umm/softwaredesign/polygon/model/PolygonModel.java:12	This class has too many methods, consider refactoring it.
+tests/umm/softwaredesign/polygon/model/StudentCodeTest.java:4	Avoid unused imports such as 'org.junit.Assert.assertEquals'
+tests/umm/softwaredesign/polygon/view/GUITest.java:29	The String literal "GeneratePolygon Panel" appears 9 times in this file; the first occurrence is on line 29
+tests/umm/softwaredesign/polygon/view/GUITest.java:29	The String literal "Side Panel" appears 15 times in this file; the first occurrence is on line 29
+tests/umm/softwaredesign/polygon/view/GUITest.java:30	The String literal "Score Panel" appears 6 times in this file; the first occurrence is on line 30
+tests/umm/softwaredesign/polygon/view/GUITest.java:39	The String literal "Actual Area" appears 5 times in this file; the first occurrence is on line 39
