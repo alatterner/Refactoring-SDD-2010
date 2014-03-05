@@ -24,11 +24,11 @@ public class Polygon {
     public void addPoint(final Point addPoint, final int position) {
         Point point1 = points.get(position);
         Point point2 = points.get((position + 1) % numPoints);
-        if (counterClockWise(point1, point2, addPoint)
-                && counterClockWise(points
+        if (isCounterClockWise(point1, point2, addPoint)
+                && isCounterClockWise(points
                         .get(((position - 1) + numPoints) % numPoints),
                         addPoint, point1)
-                && counterClockWise(addPoint, points.get((position + 2)
+                && isCounterClockWise(addPoint, points.get((position + 2)
                         % numPoints), point2)) {
             points.add(position + 1, addPoint);
             numPoints++;
@@ -44,7 +44,7 @@ public class Polygon {
         numPoints++;
     }
 
-    public boolean counterClockWise(final Point point1, final Point point2,
+    public boolean isCounterClockWise(final Point point1, final Point point2,
             final Point point3) {
         double checkIfCounterClockwise = ((point2.getX() - point1.getX()) * (point3.getY() - point2.getY()))
                 - ((point2.getY() - point1.getY()) * (point3.getX() - point2.getX()));
@@ -74,7 +74,7 @@ public class Polygon {
     
     public boolean isConvex() {
         for (int i = 0; i < numPoints; i++) {
-            if (!counterClockWise(points.get((i-1+numPoints) % numPoints), points.get((i+1) % numPoints), points.get(i))) {
+            if (!isCounterClockWise(points.get((i-1+numPoints) % numPoints), points.get((i+1) % numPoints), points.get(i))) {
                 return false;
             }
         }
