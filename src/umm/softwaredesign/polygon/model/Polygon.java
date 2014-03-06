@@ -43,6 +43,13 @@ public class Polygon {
 		numPoints++;
 	}
 
+	
+	//Determines if a given polygon is "clockwise," or "counterclockwise,"
+	//A clockwise polygon is a positively oriented curve, such that when
+	//travelling on it one always has the curve interior to the left. Exchanging
+	//the terms left and right in the above description, you get a negatively
+	//oriented curve.
+	//Details provided herein: http://en.wikipedia.org/wiki/Curve_orientation
 	public boolean isCounterClockWise(final Point point1, final Point point2,
 			final Point point3) {
 		double checkIfCounterClockwise = ((point2.getX() - point1.getX()) * (point3
