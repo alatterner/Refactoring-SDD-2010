@@ -47,6 +47,7 @@ public class Polygon {
 	}
 
 	
+	
 	//Determines if a given polygon is "clockwise," or "counterclockwise,"
 	//A clockwise polygon is a positively oriented curve, such that when
 	//traveling on it one always has the curve interior to the left. Exchanging
