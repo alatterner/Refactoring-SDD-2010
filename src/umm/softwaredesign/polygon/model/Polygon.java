@@ -55,10 +55,13 @@ public class Polygon {
 	//Details provided herein: http://en.wikipedia.org/wiki/Curve_orientation
 	public boolean isCounterClockWise(final Point2D.Double point1, final Point2D.Double point2,
 			final Point2D.Double point3) {
-		double checkIfCounterClockwise = ((point2.getX() - point1.getX()) 
-				* (point3.getY() - point2.getY()))
-				- ((point2.getY() - point1.getY()) 
-						* (point3.getX() - point2.getX()));
+		double firstXDifference = point2.getX() - point1.getX();
+		double secondYDifference = point3.getY() - point2.getY();
+		double firstYDifference = point2.getY() - point1.getY();
+		double secondXDifference = point3.getX() - point2.getX();
+		double checkIfCounterClockwise = (firstXDifference * secondYDifference)
+									   - (firstYDifference * secondXDifference);
+		
 		if (checkIfCounterClockwise < 0) {
 			return true;
 		}
