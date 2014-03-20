@@ -46,7 +46,7 @@ public class Polygon {
 	
 	//Determines if a given polygon is "clockwise," or "counterclockwise,"
 	//A clockwise polygon is a positively oriented curve, such that when
-	//travelling on it one always has the curve interior to the left. Exchanging
+	//traveling on it one always has the curve interior to the left. Exchanging
 	//the terms left and right in the above description, you get a negatively
 	//oriented curve.
 	//Details provided herein: http://en.wikipedia.org/wiki/Curve_orientation
@@ -62,6 +62,9 @@ public class Polygon {
 		return false;
 	}
 
+	//Determines if a point is inside the polygon by creating four lines from
+	//that point to each corner and checking if they all intersect at least one
+	//of the edges of the polygon.
 	public boolean contains(final Point point) {
 		Point[] bounds = { new Point(0.0, 0.0), new Point(0.0, 10.0),
 				new Point(10.0, 0.0), new Point(10.0, 10.0) };
@@ -95,14 +98,13 @@ public class Polygon {
 		return Math.abs(signedArea());
 	}
 
+	//The signed area is exactly the area for non-intersecting polygons.
+	//This might help: http://demonstrations.wolfram.com/SignedAreaOfAPolygon/
 	public double signedArea() {
 		double sum = 0.0;
 		for (int i = 0; i < numPoints; i++) {
-			sum = sum
-					+ (points.get(i).getX() * points.get((i + 1) % numPoints)
-							.getY())
-							- (points.get(i).getY() * points.get((i + 1) % numPoints)
-									.getX());
+			sum = sum + (points.get(i).getX() * points.get((i + 1) % numPoints).getY())
+					  - (points.get(i).getY() * points.get((i + 1) % numPoints).getX());
 		}
 		return 0.5 * sum;
 	}
