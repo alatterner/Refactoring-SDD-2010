@@ -13,15 +13,18 @@ import umm.softwaredesign.polygon.controllers.ClearConsoleController;
 import umm.softwaredesign.polygon.controllers.ColorSchemeController;
 
 public class ControllerTests {
-    
-    @Test
-    public final void clearConsoleControllerTest() {
-        JTextArea testTextArea = new JTextArea();
-        testTextArea.setText("A string goes here");
-    ClearConsoleController testClearConsCont = new ClearConsoleController(testTextArea);
-    assertTrue("The string was lost in the construction of the Controller", testClearConsCont.getText().equals("A string goes here"));
-    testClearConsCont.actionPerformed(null);
-    assertTrue("The string was not cleared", testClearConsCont.getText().equals(""));
-    }
+
+	@Test
+	public final void clearConsoleControllerTest() {
+		JTextArea testTextArea = new JTextArea();
+		testTextArea.setText("A string goes here");
+		ClearConsoleController testClearConsCont = new ClearConsoleController(
+				testTextArea);
+		assertTrue("The string was lost in the construction of the Controller",
+				testClearConsCont.getText().equals("A string goes here"));
+		testClearConsCont.actionPerformed(null);
+		assertTrue("The string was not cleared", testClearConsCont.getText()
+				.equals(""));
+	}
 
 }
