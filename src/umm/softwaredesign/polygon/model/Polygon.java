@@ -16,9 +16,10 @@ public class Polygon {
 
 	public boolean checkIntersects(final Point2D.Double first, final Point2D.Double second,
 			final Point2D.Double third, final Point2D.Double fourth) {
-		return Line2D.linesIntersect(first.getX(), first.getY(), second.getX(),
-				second.getY(), third.getX(), third.getY(), fourth.getX(),
-				fourth.getY());
+		return Line2D.linesIntersect(first.getX(), first.getY(), 
+				second.getX(), second.getY(), 
+				third.getX(), third.getY(), 
+				fourth.getX(), fourth.getY());
 	}
 
 	public void addPoint(final Point2D.Double addPoint, final int position) {
@@ -26,10 +27,11 @@ public class Polygon {
 		Point2D.Double point2 = points.get((position + 1) % numPoints);
 		if (isCounterClockWise(point1, point2, addPoint)
 				&& isCounterClockWise(
-						points.get(((position - 1) + numPoints) % numPoints),
+						points.get(((position - 1) + numPoints) % numPoints), 
 						addPoint, point1)
-						&& isCounterClockWise(addPoint,
-								points.get((position + 2) % numPoints), point2)) {
+				&& isCounterClockWise(
+						addPoint,points.get((position + 2) % numPoints), 
+						point2)) {
 			points.add(position + 1, addPoint);
 			numPoints++;
 		}
@@ -53,10 +55,10 @@ public class Polygon {
 	//Details provided herein: http://en.wikipedia.org/wiki/Curve_orientation
 	public boolean isCounterClockWise(final Point2D.Double point1, final Point2D.Double point2,
 			final Point2D.Double point3) {
-		double checkIfCounterClockwise = ((point2.getX() - point1.getX()) * (point3
-				.getY() - point2.getY()))
-				- ((point2.getY() - point1.getY()) * (point3.getX() - point2
-						.getX()));
+		double checkIfCounterClockwise = ((point2.getX() - point1.getX()) 
+				* (point3.getY() - point2.getY()))
+				- ((point2.getY() - point1.getY()) 
+						* (point3.getX() - point2.getX()));
 		if (checkIfCounterClockwise < 0) {
 			return true;
 		}
