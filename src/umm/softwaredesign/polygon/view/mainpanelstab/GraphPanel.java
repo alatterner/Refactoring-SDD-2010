@@ -4,10 +4,10 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
-import umm.softwaredesign.polygon.model.Point;
 import umm.softwaredesign.polygon.model.PolygonModel;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -63,7 +63,7 @@ public class GraphPanel extends JPanel implements Observer {
         }
     }
     public void drawGeneratedPolygon(final Graphics graphic) {
-        java.util.List<Point> pointList = polygonModel.getPoly().getPointList();
+        java.util.List<Point2D.Double> pointList = polygonModel.getPoly().getPointList();
         int points = polygonModel.getPoly().getNumPoints();
         changeColor(graphic);
         for (int i = 0; i < points; i++) {
@@ -72,21 +72,21 @@ public class GraphPanel extends JPanel implements Observer {
                        (int) (pointList.get((i+1) % points).getX()*(width/10)), 
                        (int) (pointList.get((i+1) % points).getY()*(height/10)));
         }   
-        for (Point p : pointList) {
+        for (Point2D.Double p : pointList) {
             graphic.fillOval((int) (p.getX()*(width/10)) - 2, (int) (p.getY()*(height/10)) - 2, 4, 4);
         }
     }
 
     public void drawGuessed(final Graphics graphic) {
-        java.util.List<Point> incorrectPoints = polygonModel.getIncorrect();
-        java.util.List<Point> correctPoints = polygonModel.getCorrect();
+        java.util.List<Point2D.Double> incorrectPoints = polygonModel.getIncorrect();
+        java.util.List<Point2D.Double> correctPoints = polygonModel.getCorrect();
         graphic.setColor(new Color(0, 152, 255));
-        for (Point correct : correctPoints) {
+        for (Point2D.Double correct : correctPoints) {
             graphic.fillOval((int) (correct.getX()*(width/10)) - 2, (int) (correct.getY()*(height/10)) - 2, 4, 4);
         }
         
         graphic.setColor(new Color(229, 29, 23));
-        for (Point incorrect : incorrectPoints) {
+        for (Point2D.Double incorrect : incorrectPoints) {
             graphic.fillOval((int) (incorrect.getX()*(width/10)) - 2, (int) (incorrect.getY()*(height/10)) - 2,4,4);
         }
     }

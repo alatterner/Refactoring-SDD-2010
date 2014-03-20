@@ -1,28 +1,29 @@
 package umm.softwaredesign.polygon.model;
 
 import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Polygon {
-	private final List<Point> points;
+	private final List<Point2D.Double> points;
 	private int numPoints;
 
 	public Polygon() {
-		points = new ArrayList<Point>();
+		points = new ArrayList<Point2D.Double>();
 		numPoints = 0;
 	}
 
-	public boolean checkIntersects(final Point first, final Point second,
-			final Point third, final Point fourth) {
+	public boolean checkIntersects(final Point2D.Double first, final Point2D.Double second,
+			final Point2D.Double third, final Point2D.Double fourth) {
 		return Line2D.linesIntersect(first.getX(), first.getY(), second.getX(),
 				second.getY(), third.getX(), third.getY(), fourth.getX(),
 				fourth.getY());
 	}
 
-	public void addPoint(final Point addPoint, final int position) {
-		Point point1 = points.get(position);
-		Point point2 = points.get((position + 1) % numPoints);
+	public void addPoint(final Point2D.Double addPoint, final int position) {
+		Point2D.Double point1 = points.get(position);
+		Point2D.Double point2 = points.get((position + 1) % numPoints);
 		if (isCounterClockWise(point1, point2, addPoint)
 				&& isCounterClockWise(
 						points.get(((position - 1) + numPoints) % numPoints),
@@ -34,11 +35,11 @@ public class Polygon {
 		}
 	}
 
-	public List<Point> getPointList() {
+	public List<Point2D.Double> getPointList() {
 		return points;
 	}
 
-	public void addInitialPoint(final Point point) {
+	public void addInitialPoint(final Point2D.Double point) {
 		points.add(point);
 		numPoints++;
 	}
@@ -50,8 +51,8 @@ public class Polygon {
 	//the terms left and right in the above description, you get a negatively
 	//oriented curve.
 	//Details provided herein: http://en.wikipedia.org/wiki/Curve_orientation
-	public boolean isCounterClockWise(final Point point1, final Point point2,
-			final Point point3) {
+	public boolean isCounterClockWise(final Point2D.Double point1, final Point2D.Double point2,
+			final Point2D.Double point3) {
 		double checkIfCounterClockwise = ((point2.getX() - point1.getX()) * (point3
 				.getY() - point2.getY()))
 				- ((point2.getY() - point1.getY()) * (point3.getX() - point2
@@ -65,9 +66,9 @@ public class Polygon {
 	//Determines if a point is inside the polygon by creating four lines from
 	//that point to each corner and checking if they all intersect at least one
 	//of the edges of the polygon.
-	public boolean contains(final Point point) {
-		Point[] bounds = { new Point(0.0, 0.0), new Point(0.0, 10.0),
-				new Point(10.0, 0.0), new Point(10.0, 10.0) };
+	public boolean contains(final Point2D.Double point) {
+		Point2D.Double[] bounds = { new Point2D.Double(0.0, 0.0), new Point2D.Double(0.0, 10.0),
+				new Point2D.Double(10.0, 0.0), new Point2D.Double(10.0, 10.0) };
 		int intersect[] = { 0, 0, 0, 0 };
 		for (int i = 0; i < bounds.length; i++) {
 			for (int j = 0; j < numPoints; j++) {

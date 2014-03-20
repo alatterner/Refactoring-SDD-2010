@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.geom.Point2D;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.text.html.*;
@@ -11,7 +12,6 @@ import javax.swing.JEditorPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.text.DefaultCaret;
-import umm.softwaredesign.polygon.model.Point;
 import umm.softwaredesign.polygon.model.PolygonModel;
 
 @SuppressWarnings("serial")
@@ -53,10 +53,10 @@ public class PointsTable extends JPanel implements Observer {
         StringBuffer points = new StringBuffer(500000);
         points.append(changeColor());
         java.text.DecimalFormat decimalFormat = new java.text.DecimalFormat("##.#####");
-        for (Point p : pModel.getPoly().getPointList()) {
+        for (Point2D.Double p : pModel.getPoly().getPointList()) {
             points.append("Point: [").append(decimalFormat.format(p.getX())).append(", ").append(decimalFormat.format(p.getY())).append("]<br />");}
         points.append("<b>Guessed Points:</b><br /><font color=#0098FF><b> ").append(getPercentage()).append("% Correct</b>" + "</font><br />");
-        for (Point p : pModel.getGuessedPoints()) {
+        for (Point2D.Double p : pModel.getGuessedPoints()) {
             if (pModel.getCorrect().contains(p)) {
                 points.append("<font color=#0098FF size=3 face=Monospace>Point: [").append(decimalFormat.format(p.getX())).append(", ").append(decimalFormat.format(p.getY())).append("]</font><br />");
                 } else {points.append("<font color=#E42217 size=3 face=Monospace>Point: [").append(decimalFormat.format(p.getX())).append(", ").append(decimalFormat.format(p.getY())).append("]</font><br />");}}

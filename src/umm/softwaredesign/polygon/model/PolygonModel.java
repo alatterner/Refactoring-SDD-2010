@@ -1,5 +1,6 @@
 package umm.softwaredesign.polygon.model;
 
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -12,9 +13,9 @@ public class PolygonModel extends Observable implements PolygonIF {
 	private Polygon polygon;
 	private Random random;
 	public int seedForDisplay;
-	final private List<Point> guessedPoints;
-	final private List<Point> correctPoints;
-	final private List<Point> incorrectPoints;
+	final private List<Point2D.Double> guessedPoints;
+	final private List<Point2D.Double> correctPoints;
+	final private List<Point2D.Double> incorrectPoints;
 	private int maxGuesses;
 	private double guessedArea;
 	private double score;
@@ -24,9 +25,9 @@ public class PolygonModel extends Observable implements PolygonIF {
 		super();
 		polygon = new Polygon();
 		random = new Random();
-		guessedPoints = new ArrayList<Point>();
-		incorrectPoints = new ArrayList<Point>();
-		correctPoints = new ArrayList<Point>();
+		guessedPoints = new ArrayList<Point2D.Double>();
+		incorrectPoints = new ArrayList<Point2D.Double>();
+		correctPoints = new ArrayList<Point2D.Double>();
 		guessedArea = 0;
 		score = 0;
 	}
@@ -76,12 +77,12 @@ public class PolygonModel extends Observable implements PolygonIF {
 		score = 0;
 	}
 
-	private Point generateRandomPoint() {
+	private Point2D.Double generateRandomPoint() {
 		double coordX;
 		double coordY;
 		coordX = random.nextDouble() * 10;
 		coordY = random.nextDouble() * 10;
-		Point point = new Point(coordX, coordY);
+		Point2D.Double point = new Point2D.Double(coordX, coordY);
 		return point;
 	}
 
@@ -89,21 +90,21 @@ public class PolygonModel extends Observable implements PolygonIF {
 		return polygon;
 	}
 
-	public List<Point> getGuessedPoints() {
+	public List<Point2D.Double> getGuessedPoints() {
 		return guessedPoints;
 	}
 
-	public List<Point> getIncorrect() {
+	public List<Point2D.Double> getIncorrect() {
 		return incorrectPoints;
 	}
 
-	public List<Point> getCorrect() {
+	public List<Point2D.Double> getCorrect() {
 		return correctPoints;
 	}
 
 	private void generateInitialPoints() {
 		for (int i = 0; i < 2; i++) {
-			Point newP = generateRandomPoint();
+			Point2D.Double newP = generateRandomPoint();
 			polygon.addInitialPoint(newP);
 		}
 	}
@@ -117,7 +118,7 @@ public class PolygonModel extends Observable implements PolygonIF {
 
 	@Override
 	public boolean isInside(final double xCord, final double yCord) {
-		Point guess = new Point(xCord, yCord);
+		Point2D.Double guess = new Point2D.Double(xCord, yCord);
 		if (guessesRemaining() > 0) {
 			guessedPoints.add(guess);
 			if (polygon.contains(guess)) {
@@ -128,7 +129,7 @@ public class PolygonModel extends Observable implements PolygonIF {
 		} else {
 			throw new TooManyGuessesException();
 		}
-		return polygon.contains(new Point(xCord, yCord));
+		return polygon.contains(new Point2D.Double(xCord, yCord));
 	}
 
 	public int getMaxGuesses() {
