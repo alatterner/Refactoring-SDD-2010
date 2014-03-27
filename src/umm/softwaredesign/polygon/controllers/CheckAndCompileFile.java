@@ -27,7 +27,7 @@ public final class CheckAndCompileFile {
 			throws IOException, ClassNotFoundException {
 		final String[] fileNameAndExt = getFileNameAndExt(studentFile);
 		if (fileNameAndExt.length == 1) {
-			LOGGER.severe("File handed to checkFiletype wasn't .java or class, throwihng IOException");
+			LOGGER.severe("File handed to checkFiletype wasn't .java or class, throwing IOException");
 			throw new IOException(
 					"Given file did not have a .java or .class extension and thus is unsupported.");
 		}

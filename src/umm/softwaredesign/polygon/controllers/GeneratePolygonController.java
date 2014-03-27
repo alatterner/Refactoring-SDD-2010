@@ -34,19 +34,7 @@ public class GeneratePolygonController implements ActionListener {
 			try {
 				int seed = Integer.parseInt(seedNumber.getText());
 				int sides = Integer.parseInt(sidesField.getText());
-				if (sides >= 21) {
-					sides = 20;
-					JOptionPane.showMessageDialog(null,
-							"The maximum allowable number of vertices is 20.",
-							"Too Many Vertices", JOptionPane.WARNING_MESSAGE,
-							null);
-				} else if (sides < 5) {
-					sides = 5;
-					JOptionPane.showMessageDialog(null,
-							"The minimum allowable number of vertices is 5",
-							"Too Few Vertices", JOptionPane.WARNING_MESSAGE,
-							null);
-				}
+				sides = verifySideLimits(sides);
 				int guesses = Integer.parseInt(guessesField.getText());
 				pModel.createRandomPolygon(seed, sides, guesses);
 			} catch (NumberFormatException e) {
@@ -55,5 +43,22 @@ public class GeneratePolygonController implements ActionListener {
 						"Invalid Seed", JOptionPane.ERROR_MESSAGE, null);
 			}
 		}
+	}
+
+	private int verifySideLimits(int sides) {
+		if (sides >= 21) {
+			sides = 20;
+			JOptionPane.showMessageDialog(null,
+					"The maximum allowable number of vertices is 20.",
+					"Too Many Vertices", JOptionPane.WARNING_MESSAGE,
+					null);
+		} else if (sides < 5) {
+			sides = 5;
+			JOptionPane.showMessageDialog(null,
+					"The minimum allowable number of vertices is 5",
+					"Too Few Vertices", JOptionPane.WARNING_MESSAGE,
+					null);
+		}
+		return sides;
 	}
 }
